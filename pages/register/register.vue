@@ -20,7 +20,18 @@
 			}
 		},
 		methods: {
-			
+			register: function() {
+			uni.getUserProfile({
+				desc:'Wexin', // 这个参数是必须的
+				success:res=>{
+				       let nickName = res.userInfo.nickName;
+					   let avatarUrl = res.userInfo.avatarUrl;
+					   console.log(nickName);
+					   console.log(avatarUrl);
+				    },
+			})
+				
+		},
 		}
 	}
 </script>
