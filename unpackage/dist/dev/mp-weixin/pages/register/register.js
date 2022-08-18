@@ -141,27 +141,71 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 var _default =
 {
   data: function data() {
-    return {};
-
+    return {
+      registerCode: '' };
 
   },
   methods: {
     register: function register() {
+      var _this = this;
+      if (_this.registerCode == null || _this.registerCode.length == 0) {
+        uni.showToast({
+          icon: 'none',
+          title: '邀请码不能为空' });
+
+        return;
+      } else if (/^[0-9]{6}$/.test(_this.registerCode) == false) {
+        uni.showToast({
+          icon: 'none',
+          title: '邀请码必须是6位数字' });
+
+        return;
+      }
+      // uni.login({
+      // 	provider: 'weixin',
+      // 	success: function(resp) {
+      // 		let code = resp.code;
+      // 		_this.code = code;
+      // 		console.log('code', code);
+      // 		// console.log(resp);
+      // 	}
+      // });
       uni.getUserProfile({
         desc: 'Wexin', // 这个参数是必须的
-        success: function success(res) {
-          var nickName = res.userInfo.nickName;
-          var avatarUrl = res.userInfo.avatarUrl;
-          console.log(nickName);
-          console.log(avatarUrl);
-        } });
+        success: function success(resp) {
+          uni.login({
+            provider: 'weixin',
+            success: function success(res) {
+              var code = res.code;
+              // _this.code = code;
+              console.log('code', code);
+              // console.log(resp);
+              // console.log(resp);
+              var nickName = resp.userInfo.nickName;
+              var avatarUrl = resp.userInfo.avatarUrl;
+              // console.log(nickName);
+              // console.log(avatarUrl); 
+              var data = {
+                code: code,
+                nickname: nickName,
+                photo: avatarUrl,
+                registerCode: _this.registerCode };
 
+
+              console.log("register", _this.url.register);
+              _this.ajax(_this.url.register, "POST", data, function (resp) {
+                var permission = resp.data.permission;
+                uni.setStorageSync("permission", permission);
+                console.log("permission", permission);
+                //TODO 跳转到index页面
+              });
+            } });
+
+
+        } });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
