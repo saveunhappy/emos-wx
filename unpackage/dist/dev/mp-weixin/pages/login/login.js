@@ -151,15 +151,35 @@ __webpack_require__.r(__webpack_exports__);
 var _default =
 {
   data: function data() {
-    return {
-      toRegister: function toRegister() {
-        uni.navigateTo({
-          url: "../register/register" });
-
-      } };
-
+    return {};
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    toRegister: function toRegister() {
+      uni.navigateTo({
+        url: '../register/register' });
+
+    },
+    login: function login() {
+      var _this = this;
+      uni.login({
+        provider: 'weixin',
+        success: function success(resp) {
+          var code = resp.code;
+          _this.ajax(_this.url.login, 'POST', { code: code }, function (resp) {
+            var permission = resp.data.permission;
+            uni.setStorageSync('permission', permission);
+          });
+          console.log('success');
+        },
+        fail: function fail(e) {
+          console.log(e);
+          uni.showToast({
+            icon: 'none',
+            title: '执行异常' });
+
+        } });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

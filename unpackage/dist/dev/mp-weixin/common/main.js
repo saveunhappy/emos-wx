@@ -21,7 +21,8 @@ createApp(app).$mount();
 
 var baseUrl = "http://127.0.0.1:8080/emos-wx-api";
 _vue.default.prototype.url = {
-  register: baseUrl + "/user/register" };
+  register: baseUrl + "/user/register",
+  login: baseUrl + "/user/login" };
 
 // Vue.prototype.url = {
 // 	register: baseUrl + "/user/register"
@@ -50,7 +51,7 @@ _vue.default.prototype.ajax = function (url, method, data, fun) {
       } else {
         uni.showToast({
           icon: "none",
-          title: resp.data });
+          title: resp.data.msg });
 
       }
     } });
