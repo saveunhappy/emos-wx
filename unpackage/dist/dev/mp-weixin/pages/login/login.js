@@ -172,7 +172,12 @@ var _default =
             var permission = resp.data.permission;
             uni.setStorageSync('permission', permission);
           });
+
           console.log('success');
+          uni.switchTab({
+            url: "/pages/index/index" });
+
+          console.log('login---->index');
         },
         fail: function fail(e) {
           console.log(e);

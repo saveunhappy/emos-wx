@@ -32,7 +32,12 @@ export default {
 						let permission = resp.data.permission;
 						uni.setStorageSync('permission', permission);
 					});
+					
 					console.log('success');
+					uni.switchTab({
+						url:"/pages/index/index", 
+					})
+					console.log('login---->index');
 				},
 				fail: function(e) {
 					console.log(e);

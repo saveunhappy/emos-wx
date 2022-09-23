@@ -1,6 +1,6 @@
-<template>
+ <template>
 	<view>
-		
+		会议
 	</view>
 </template>
 
@@ -17,6 +17,6 @@
 	}
 </script>
 
-<style>
-
+<style lang="less">
+	@import url("meeting_list.less");
 </style>

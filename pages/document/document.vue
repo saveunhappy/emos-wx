@@ -1,6 +1,6 @@
 <template>
 	<view>
-		
+		文档
 	</view>
 </template>
 
@@ -17,6 +17,6 @@
 	}
 </script>
 
-<style>
-
+<style lang="less"> 
+	@import url("document.less");
 </style>

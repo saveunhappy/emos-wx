@@ -69,6 +69,9 @@ export default {
 								uni.setStorageSync("permission",permission);
 								console.log("permission",permission);
 								//TODO 跳转到index页面
+								uni.switchTab({
+									url:"../index/index"
+								})
 							})
 						}
 					});
