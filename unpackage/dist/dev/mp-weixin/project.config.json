@@ -6,6 +6,11 @@
   },
   "setting": {
     "urlCheck": false,
+    "es6": false,
+    "postcss": false,
+    "minified": false,
+    "newFeature": true,
+    "bigPackageSizeSupport": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -13,7 +18,7 @@
     }
   },
   "compileType": "miniprogram",
-  "libVersion": "2.25.2",
+  "libVersion": "2.26.0",
   "appid": "wxc6012ca0df05ded5",
   "projectname": "emos-wx",
   "condition": {},
